@@ -6,7 +6,7 @@ async function prompt(promptText) {
     rl.question(promptText, resolve);
   });
 }
-
+//this comment is for testing purposes
 async function start() {
   await guessTheNumber();
 }
@@ -27,7 +27,7 @@ async function guessTheNumber() {
     // check to see if the user guessed the secret number correctly
     if (parseInt(userGuess) === secretNumber) {
       console.log(" Yay, you did it!");
-      process.exit();//replace this with a call to function- to run the start function(its a callback)
+      process.exit(); //replace this with a call to function- to run the start function(its a callback)
 
       // if not, determine if the number that the user guessed is higher or lower
     } else if (userGuess > secretNumber) {
@@ -37,7 +37,6 @@ async function guessTheNumber() {
     }
     userGuess = parseInt(await prompt("Guess again \n"));
   }
-
 }
 
 start();

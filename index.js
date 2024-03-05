@@ -6,7 +6,7 @@ function prompt(promptText) {
     rl.question(promptText, resolve);
   });
 }
-
+// this is for testing purposes
 async function start() {
   await guessTheNumberGame();
 }
