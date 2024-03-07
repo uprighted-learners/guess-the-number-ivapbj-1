@@ -6,9 +6,10 @@ function prompt(promptText) {
     rl.question(promptText, resolve);
   });
 }
+
 // this is for testing purposes
 async function start() {
-  await guessTheNumberGame();
+  guessTheNumberGame();
 }
 async function guessTheNumberGame() {
   console.log(
@@ -39,7 +40,7 @@ async function guessTheNumberGame() {
   //games asks you to guess number
   while (true) {
     if (attempts > maxAttempts) {
-      console.log("But I've run out of attempts... play again");
+      console.log("But I've run out of attempts. GAME OVER");
       process.exit();
     } else {
       let guessResponse = await prompt(
@@ -48,7 +49,8 @@ async function guessTheNumberGame() {
       let guess = guessResponse.toLowerCase(); //sanitze input to lowercase
       if (guess === "r") {
         console.log(`Yay! I guessed correctly!\n End of game.`);
-        process.exit(); // write call back function outside of start to restart game
+        playAgain();
+        // write call back function outside of start to restart game
       } else if (guess === "h") {
         console.log(`Ok. The number is higher.`);
         min = randomNumber + 1;
@@ -68,4 +70,12 @@ async function guessTheNumberGame() {
 }
 
 start();
-// ~ to run this code, open Terminal and enter 'node index.js'
+async function playAgain() {
+  // this functions asks: "do you want to play again?"
+  let response = await prompt("Would you like to play again(y/n)?\n");
+  if (response.toLowerCase() === "y") {
+    start();
+  } else {
+    process.exit();
+  }
+}
