@@ -39,3 +39,5 @@ Organization:
             Additionally, do ensure that your renamed files match the naming convention of other files in your project
 
     Final Result: 3
+
+### OVERALL RESULT: 7/9 ###
